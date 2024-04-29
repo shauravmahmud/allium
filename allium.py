@@ -4,12 +4,12 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urlunparse
 import time
 import webbrowser
-import socks
-import socket
+#import socks
+#import socket
 
 # Set up SOCKS proxy
-socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050)
-socket.socket = socks.socksocket
+#socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050)
+#socket.socket = socks.socksocket
 
 st.set_page_config(
     page_title="Tor Browser",
@@ -31,6 +31,7 @@ def fetch_and_parse_html(url):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
+    # Remove proxies parameter
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
     return soup
